@@ -34,3 +34,70 @@ function dump_logo(target, w) {
   window['logo_'+target] = logo;
 }
 
+function style_logo(target) {
+  var rounded = {
+    'stroke-linecap': 'round',
+    'stroke-linejoin': 'round',
+    'stroke-miterlimit': 4};
+
+  var circ = {
+    'stroke': '#00bfff',
+    'stroke-width': 5.5 };
+
+  var txt = {'stroke-width': 10 };
+
+  target.text_set.attr(rounded);
+  target.text_set.attr(txt);
+  target.circle_set.attr(circ);
+}
+
+function anim_logo(target) {
+  target.text_set.attr({'stroke': '#fff'});
+  target.circle_set.attr({'stroke': '#fff'});
+
+  setTimeout(function() {
+    target.text_set.animate(
+      {'stroke': '#000'},
+      500, 'backIn');
+    }, 0);
+
+
+  var i=0;
+  var c_anim_start=600;
+  var dt=200;
+  for(; i < target.circle_set.length; i++) {
+    (function(i) {
+      setTimeout(function() {
+        target.circle_set[i].animate(
+          {'stroke': '#eee'},
+          dt, '>');
+      }, dt*i+c_anim_start);
+      setTimeout(function() {
+        target.circle_set[i].animate(
+          {'stroke': '#00bfff'},
+          dt+400, '>');
+      }, dt*(i+1)+c_anim_start);
+    })(i);
+  }
+
+  var tt = 200;
+  var t_anim_start=800;
+  var t2_anim_start=2400;
+  i = 0;
+  for(; i < target.text_set.length; i++) {
+    (function(i) {
+      setTimeout(function() {
+        target.text_set[i].animate(
+          {'stroke-width': 5},
+          tt, '>');
+      }, tt*i+t_anim_start);
+    })(i);
+  }
+  setTimeout(function() {
+    target.text_set.animate(
+      {'stroke-width': 10},
+      200, 'bounce' );
+  }, t2_anim_start);
+}
+
+
