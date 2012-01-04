@@ -6,98 +6,12 @@
   <hr />
   <img id='logo' src='./logo.svg' />
   <hr />
-  <div id='rescale' style='width:100px'></div>
-  <div id='styled1'></div>
-  <div id='styled2'></div>
-  <div id='styled3'></div>
-
   <script type='text/javascript'>
   $(document).ready(function() {
-    /*
-    dump_logo('rescale', 200);
-    dump_logo('styled1', 530);
-    dump_logo('styled2', 530);
-    dump_logo('styled3', 530);
-
-    window.logo_styled1.text_set.attr(txt);
-
-    window.logo_styled2.text_set.attr(txt);
-    window.logo_styled2.circle_set.attr(circ);
-
-    window.logo_styled3.text_set.attr(rounded);
-    window.logo_styled3.text_set.attr(txt);
-    window.logo_styled3.circle_set.attr(circ);
-    */
-
-
-    var rounded = {
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round',
-      'stroke-miterlimit': 4};
-
-    var circ = {
-      'stroke': '#8d4d4d',
-      'stroke-width': 5.5 };
-
-    var txt = {'stroke-width': 10 };
-
     dump_logo('anim1', 530);
-    window.logo_anim1.text_set.attr(rounded);
-    window.logo_anim1.text_set.attr(txt);
-    window.logo_anim1.text_set.attr(
-      {'stroke': '#fff'});
-
-    window.logo_anim1.circle_set.attr(circ);
-    window.logo_anim1.circle_set.attr(
-      {'stroke': '#fff'});
-
     var a1 = window.logo_anim1;
-
-    setTimeout(function() {
-      a1.text_set.animate(
-        {'stroke': '#000'},
-        500, 'backIn');
-      }, 0);
-
-
-    var i=0;
-    var c_anim_start=600;
-    var dt=200;
-    for(; i < a1.circle_set.length; i++) {
-      (function(i) {
-        setTimeout(function() {
-          a1.circle_set[i].animate(
-            {'stroke': '#eee'},
-            dt, '>');
-        }, dt*i+c_anim_start);
-        setTimeout(function() {
-          a1.circle_set[i].animate(
-            {'stroke': '#00bfff'},
-            dt+400, '>');
-        }, dt*(i+1)+c_anim_start);
-      })(i);
-    }
-
-    var tt = 200;
-    var t_anim_start=800;
-    var t2_anim_start=2400;
-    i = 0;
-    for(; i < a1.text_set.length; i++) {
-      (function(i) {
-        setTimeout(function() {
-          a1.text_set[i].animate(
-            {'stroke-width': 5},
-            tt, '>');
-        }, tt*i+t_anim_start);
-      })(i);
-    }
-    setTimeout(function() {
-      a1.text_set.animate(
-        {'stroke-width': 10},
-        200, 'bounce' );
-    }, t2_anim_start);
-
-
+    style_logo(a1);
+    anim_logo(a1);
   });
   </script>
 </html>
