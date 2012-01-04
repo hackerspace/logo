@@ -1,8 +1,8 @@
 function dump_logo(target, w) {
+  var logo = new Object();
+
   var ratio = 3;
   var scale_w = w/530;
-
-  var logo = new Object();
 
   r = new Raphael(target, w, w/ratio);
   r.setStart();
@@ -28,6 +28,7 @@ function dump_logo(target, w) {
   // rescale
   logo.text_set.scale(scale_w, scale_w, 0, 0);
   logo.circle_set.scale(scale_w, scale_w, 0, 0);
+  logo.scale_factor = scale_w;
 
   logo.raphael = r;
 
@@ -35,16 +36,18 @@ function dump_logo(target, w) {
 }
 
 function style_logo(target) {
+  var scale = target.scale_factor;
+
   var rounded = {
     'stroke-linecap': 'round',
     'stroke-linejoin': 'round',
-    'stroke-miterlimit': 4};
+    'stroke-miterlimit': 4*scale};
 
   var circ = {
     'stroke': '#00bfff',
-    'stroke-width': 5.5 };
+    'stroke-width': 5*scale };
 
-  var txt = {'stroke-width': 10 };
+  var txt = {'stroke-width': 10*scale };
 
   target.text_set.attr(rounded);
   target.text_set.attr(txt);
@@ -52,6 +55,8 @@ function style_logo(target) {
 }
 
 function anim_logo(target) {
+  var scale = target.scale_factor;
+
   target.text_set.attr({'stroke': '#fff'});
   target.circle_set.attr({'stroke': '#fff'});
 
@@ -88,14 +93,14 @@ function anim_logo(target) {
     (function(i) {
       setTimeout(function() {
         target.text_set[i].animate(
-          {'stroke-width': 5},
+          {'stroke-width': 5*scale},
           tt, '>');
       }, tt*i+t_anim_start);
     })(i);
   }
   setTimeout(function() {
     target.text_set.animate(
-      {'stroke-width': 10},
+      {'stroke-width': 10*scale},
       200, 'bounce' );
   }, t2_anim_start);
 }
