@@ -13,7 +13,7 @@
       stroke-miterlimit:4;
     }
     #circles path {
-      stroke:#8d4d4d;
+      stroke:#00bfff;
       stroke-width:5.5;
       stroke-opacity:1;
     }
