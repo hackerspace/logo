@@ -47,7 +47,7 @@ function style_logo(target) {
     'stroke': '#00bfff',
     'stroke-width': 5*scale };
 
-  var txt = {'stroke-width': 10*scale };
+  var txt = {'stroke-width': 8*scale };
 
   target.text_set.attr(rounded);
   target.text_set.attr(txt);
@@ -100,8 +100,8 @@ function anim_logo(target) {
   }
   setTimeout(function() {
     target.text_set.animate(
-      {'stroke-width': 10*scale},
-      200, 'bounce' );
+      {'stroke-width': 8*scale},
+      600, 'bounce' );
   }, t2_anim_start);
 }
 
