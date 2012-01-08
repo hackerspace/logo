@@ -44,7 +44,7 @@ function style_logo(target) {
     'stroke-miterlimit': 4*scale};
 
   var circ = {
-    'stroke': '#00bfff',
+    'stroke': '#cb0000',
     'stroke-width': 5*scale };
 
   var txt = {'stroke-width': 8*scale };
@@ -79,7 +79,7 @@ function anim_logo(target) {
       }, dt*i+c_anim_start);
       setTimeout(function() {
         target.circle_set[i].animate(
-          {'stroke': '#00bfff'},
+          {'stroke': '#cb0000'},
           dt+400, '>');
       }, dt*(i+1)+c_anim_start);
     })(i);
@@ -100,7 +100,7 @@ function anim_logo(target) {
   }
   setTimeout(function() {
     target.text_set.animate(
-      {'stroke-width': 8*scale},
+      {'stroke-width': 7*scale},
       600, 'bounce' );
   }, t2_anim_start);
 }
